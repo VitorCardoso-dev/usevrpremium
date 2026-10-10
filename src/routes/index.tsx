@@ -4,6 +4,8 @@ import { ArrowRight, ArrowUpRight, Instagram, Menu, X, Truck, ShieldCheck, Messa
 import * as Dialog from "@radix-ui/react-dialog";
 import { Button } from "@/components/ui/button";
 import campaign from "@/assets/campaign.jpg";
+import essence from "@/assets/essence.jpg";
+import logo from "@/assets/logo.png";
 import { categories, products, whatsapp, instagram, type Product } from "@/lib/catalog";
 
 export const Route = createFileRoute("/")({
@@ -19,7 +21,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Brand() {
-  return <span><span className="wordmark">usevr<span className="wordmark-dot">.</span></span><span className="brand-caption">MODA MASCULINA PREMIUM</span></span>;
+  return <span className="brand-lockup"><img className="brand-logo" src={logo} alt="usevr — moda masculina premium" width={1152} height={576} /><span className="brand-caption">MODA MASCULINA PREMIUM</span></span>;
 }
 
 function ExternalLink({ children, href, className, variant = "editorial" }: { children: React.ReactNode; href: string; className?: string; variant?: "editorial" | "quiet" | "ghost" }) {
@@ -85,7 +87,7 @@ function Index() {
           <p className="product-note">Imagens editoriais ilustrativas. Consulte fotos reais, cores, tamanhos e disponibilidade com a nossa equipe.</p>
         </section>
 
-        <section id="sobre" className="about"><div className="about-photo"><img src={campaign} alt="O estilo contemporâneo da usevr em uma polo preta" width={1920} height={1024} loading="lazy" /></div><div className="about-copy"><span className="eyebrow">A ESSÊNCIA USEVR</span><h2>O verdadeiro estilo<br />começa em você.</h2><p>Nascida em Fortaleza, a usevr acredita na força de um visual autêntico. Na peça que combina com a sua rotina. No detalhe que faz você se sentir bem.</p><p>Selecionamos moda masculina que une presença e conforto — do básico indispensável à textura que transforma uma combinação. De Fortaleza, para onde você estiver.</p><ExternalLink href={instagram} variant="quiet"><Instagram /> Conheça nosso universo <ArrowUpRight /></ExternalLink></div></section>
+        <section id="sobre" className="about"><div className="about-photo"><img src={essence} alt="Peças da seleção usevr organizadas sobre uma mesa de madeira" width={1024} height={1280} loading="lazy" /></div><div className="about-copy"><span className="eyebrow">A ESSÊNCIA USEVR</span><h2>O verdadeiro estilo<br />começa em você.</h2><p>Nascida em Fortaleza, a usevr acredita na força de um visual autêntico. Na peça que combina com a sua rotina. No detalhe que faz você se sentir bem.</p><p>Selecionamos moda masculina que une presença e conforto — do básico indispensável à textura que transforma uma combinação. De Fortaleza, para onde você estiver.</p><ExternalLink href={instagram} variant="quiet"><Instagram /> Conheça nosso universo <ArrowUpRight /></ExternalLink></div></section>
 
         <section id="contato" className="contact shell"><p className="section-kicker">UMA CONVERSA. MUITAS POSSIBILIDADES.</p><h2>Seu próximo look começa aqui.</h2><p>Conte o que você procura. A gente te ajuda a encontrar a sua próxima peça favorita.</p><ExternalLink href={whatsapp('Olá! Quero conversar com a equipe usevr e encontrar peças para o meu estilo.')}><MessageCircle /> Fale com a usevr <ArrowRight /></ExternalLink><span className="phone">(85) 99728-5773 · Fortaleza, CE</span></section>
       </main>
