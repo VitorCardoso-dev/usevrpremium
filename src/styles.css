@@ -262,7 +262,6 @@ button,a { touch-action: manipulation; }
 .contact .phone { display: block; font-size: 10px; margin-top: 17px; color: var(--muted-foreground); }
 .footer { background: var(--primary); color: var(--primary-foreground); padding: 44px 0 20px; }
 .footer-top { display: grid; grid-template-columns: 1fr 1fr auto; gap: 35px; padding-bottom: 35px; }
-.footer .brand-logo { height: 30px; }
 .footer p { font-size: 10px; opacity: .65; margin: 12px 0 0; }
 .footer-nav { display: flex; align-items: center; gap: 23px; font-size: 11px; }
 .footer-social { display: flex; align-items: center; gap: 12px; }
@@ -300,8 +299,7 @@ button,a { touch-action: manipulation; }
   .shell { width: calc(100% - 40px); }
   .announcement { font-size: 9px; }
   .header-row { height: 68px; grid-template-columns: minmax(0,1fr) auto; gap: 10px; }
-  .wordmark { font-size: 31px; }
-  .brand-caption { font-size: 7px; }
+  .brand-logo { height: 24px; }
   .main-nav,.desktop-social { display: none; }
   .header-actions { gap: 7px; }
   .header-actions .buy-button { font-size: 10px; padding: 0 12px; height: 34px; }
