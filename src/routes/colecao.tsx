@@ -67,7 +67,7 @@ const productPhotos: Record<string, string[]> = {
     "photo-1539533018447-63fcce2678e3",
     "photo-1483985988355-763728e1935b",
     "photo-1490481651871-ab68de25d43d",
-    "photo-1529139574466-a303027c1d8b",
+    "photo-1524504388940-b1c1722653e1",
   ],
 };
 
