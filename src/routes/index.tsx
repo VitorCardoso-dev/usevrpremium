@@ -93,7 +93,7 @@ function Index() {
               <h1>usevr<span className="wordmark-dot">.</span></h1>
               <p className="hero-title">Seu estilo.<br /><strong>Sua essência.</strong></p>
               <p className="hero-description">Mais do que vestir. É sobre ser você.<br />Peças selecionadas para quem encontra<br className="hidden sm:block" /> no simples a sua melhor versão.</p>
-              <Button asChild variant="editorial" className="hero-cta"><a href="/colecao">Ver coleção completa <ArrowUpRight /></a></Button>
+              <Button asChild variant="editorial" className="hero-cta"><a href="/colecao">Ver catálogo <ArrowUpRight /></a></Button>
             </div>
             <div className="hero-bottom"><span>MENOS EXCESSO. MAIS PERSONALIDADE.</span><div className="hero-index">01 <span /> USEVR ESSENTIALS</div></div>
           </div>
@@ -104,13 +104,13 @@ function Index() {
         </div></section>
 
         <section id="categorias" className="section shell">
-          <div className="section-heading"><div><p className="section-kicker">ENCONTRE O SEU ESTILO</p><h2>Essenciais para cada versão sua.</h2></div><Button asChild variant="quiet" className="section-link"><a href="/colecao">Ver coleção completa <ArrowUpRight /></a></Button></div>
+          <div className="section-heading"><div><p className="section-kicker">ENCONTRE O SEU ESTILO</p><h2>Essenciais para cada versão sua.</h2></div><Button asChild variant="quiet" className="section-link"><a href="/colecao">Ver catálogo <ArrowUpRight /></a></Button></div>
           <div className="category-grid">{categories.map(c => <a key={c.name} className="category" href="#produtos" onClick={() => setFilter(c.name)} aria-label={`Ver ${c.name}`}><img src={c.image} width={768} height={1024} loading="lazy" alt={`Moda masculina usevr — ${c.name}`} /><div className="category-caption"><div><h3>{c.name}</h3><p>{c.subtitle}</p></div><ArrowUpRight /></div></a>)}</div>
           <div className="extra-categories">{['Shorts', 'Texturizadas', 'Bonés', 'Promoções'].map(c => <a key={c} href={whatsapp(`Olá! Gostaria de conhecer as opções de ${c.toLowerCase()} da usevr.`)} target="_blank" rel="noopener noreferrer">{c} <ArrowUpRight className="inline size-3 ml-1" /></a>)}</div>
         </section>
 
         <section id="produtos" className="section products-section shell">
-          <div className="section-heading"><div><p className="section-kicker">CURADORIA USEVR</p><h2>Peças que fazem a diferença.</h2></div><Button asChild variant="quiet" className="section-link"><a href="/colecao">Ver coleção completa <ArrowUpRight /></a></Button></div>
+          <div className="section-heading"><div><p className="section-kicker">CURADORIA USEVR</p><h2>Peças que fazem a diferença.</h2></div><Button asChild variant="quiet" className="section-link"><a href="/colecao">Ver catálogo <ArrowUpRight /></a></Button></div>
           <div className="filters" aria-label="Filtrar peças">{['Todos', 'Básicas', 'Polos', 'Regatas'].map(f => <Button key={f} variant="filter" data-active={filter === f} aria-pressed={filter === f} onClick={() => setFilter(f)}>{f}</Button>)}</div>
           <div className="product-grid">{visibleProducts.map(p => <article className="product" key={p.id}>
             <div className={`product-image ${p.id === 'polo-preta' ? 'campaign-product' : ''}`}><img src={p.image} alt={p.name} width={768} height={1024} loading="lazy" /><span className="product-tag">{p.tag}</span><Button className="product-open" variant="ghost" aria-label={`Ver detalhes de ${p.name}`} onClick={() => { setSelected(p); setSize(''); }}><Plus /></Button></div>
