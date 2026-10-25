@@ -1,14 +1,18 @@
-# Welcome to your Lovable project
+# Usevrpremium
+
+melhore em 100% o site da "usevr", deixe o site muito mais profissional, bonito, elegante e atrativo, use o modelo ao lado para a "estrutura", não como copia
 
 This project was built with [Lovable](https://lovable.dev).
 
+**Live app**: https://usevrpremium.lovable.app
+
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/77ac77ae-9076-4091-86c2-7a30a2d2de52).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +24,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
