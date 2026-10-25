@@ -32,63 +32,54 @@ const models: Record<string, string[]> = {
   ],
 };
 
+const productPhotos: Record<string, string[]> = {
+  Básicas: [
+    "photo-1521572163474-6864f9cf17ab",
+    "photo-1583743814966-8936f37f4678",
+    "photo-1618354691373-d851c5c3a990",
+    "photo-1622445275463-afa2ab738c34",
+    "photo-1576566588028-4147f3842f27",
+    "photo-1554568218-0f1715e72254",
+    "photo-1525507119028-ed4c629a60a3",
+    "photo-1620799140408-edc6dcb6d633",
+    "photo-1578587018452-892bacefd3f2",
+    "photo-1523398002811-999ca8dec234",
+  ],
+  Polos: [
+    "photo-1523381210434-271e8be1f52b",
+    "photo-1551488831-00ddcb6c6bd3",
+    "photo-1551232864-3f0890e580d9",
+    "photo-1544441893-675973e31985",
+    "photo-1627225924765-552d49cf47ad",
+    "photo-1551028719-00167b16eac5",
+    "photo-1543076447-215ad9ba6923",
+    "photo-1633966887768-64f9a867bdba",
+    "photo-1520004434532-668416a08753",
+    "photo-1490114538077-0a7f8cb49891",
+  ],
+  Regatas: [
+    "photo-1503342217505-b0a15ec3261c",
+    "photo-1515886657613-9f3515b0c78f",
+    "photo-1529139574466-a303027c1d8b",
+    "photo-1539109136881-3be0616acf4b",
+    "photo-1509631179647-0177331693ae",
+    "photo-1515372039744-b8f02a3ae446",
+    "photo-1539533018447-63fcce2678e3",
+    "photo-1483985988355-763728e1935b",
+    "photo-1490481651871-ab68de25d43d",
+    "photo-1524504388940-b1c1722653e1",
+  ],
+};
+
 const collection = categories.flatMap((category) =>
   (models[category.name] ?? []).map((name, index) => ({
     id: category.name + "-" + index,
     name,
     category: category.name,
-    index,
+    image: `https://images.unsplash.com/${productPhotos[category.name][index]}?auto=format&fit=crop&w=900&q=85`,
     number: String(index + 1).padStart(2, "0"),
   }))
 );
-
-const garmentColors = [
-  { fabric: "#171717", background: "#e8e5df", detail: "#f5f2eb" },
-  { fabric: "#e8e4dc", background: "#d6d2ca", detail: "#252525" },
-  { fabric: "#737c70", background: "#e4e2d9", detail: "#f4f1e9" },
-  { fabric: "#253c55", background: "#e1e4e7", detail: "#f3f0e9" },
-  { fabric: "#9d473a", background: "#e9ddd4", detail: "#f5eee7" },
-  { fabric: "#c6a56d", background: "#e8e2d6", detail: "#292929" },
-  { fabric: "#4e4e4e", background: "#dddcd7", detail: "#d8c9a7" },
-  { fabric: "#a7b9c6", background: "#e4e7e6", detail: "#25313a" },
-  { fabric: "#5c4d68", background: "#e5dfe5", detail: "#f5f0e8" },
-  { fabric: "#f1eee7", background: "#dedbd3", detail: "#373737" },
-];
-
-function GarmentIllustration({ category, index, name }: { category: string; index: number; name: string }) {
-  const palette = garmentColors[(index + (category === "Polos" ? 3 : category === "Regatas" ? 6 : 0)) % garmentColors.length];
-  const isPolo = category === "Polos";
-  const isTank = category === "Regatas";
-  const shape = isTank
-    ? "M73 48 L91 48 L105 66 L118 49 L136 49 L151 85 L140 94 L131 78 L135 169 Q104 179 73 169 L78 78 L67 94 L56 85 Z"
-    : isPolo
-      ? "M75 42 L91 42 L104 55 L117 42 L133 42 L153 66 L139 82 L129 72 L135 169 Q104 178 73 169 L79 72 L69 82 L55 66 Z"
-      : "M75 42 L91 42 L104 55 L117 42 L133 42 L153 66 L139 82 L129 72 L135 169 Q104 178 73 169 L79 72 L69 82 L55 66 Z";
-  const pattern = index % 4;
-  return (
-    <svg className="garment-illustration" viewBox="0 0 208 208" role="img" aria-label={name + ", ilustração de produto"}>
-      <rect width="208" height="208" fill={palette.background} />
-      <ellipse cx="104" cy="176" rx="48" ry="7" fill="#000" opacity=".08" />
-      <g transform={index % 2 ? "rotate(-3 104 104)" : "rotate(2 104 104)"}>
-        <path d={shape} fill={palette.fabric} stroke="#000" strokeOpacity=".12" strokeWidth="1.5" strokeLinejoin="round" />
-        {isPolo && <>
-          <path d="M91 42 L104 56 L117 42 L112 65 L104 71 L96 65 Z" fill={palette.detail} />
-          <path d="M104 70 L104 112" stroke={palette.detail} strokeWidth="2" opacity=".9" />
-          <circle cx="108" cy="82" r="1.6" fill={palette.detail} />
-          <circle cx="108" cy="91" r="1.6" fill={palette.detail} />
-        </>}
-        {!isPolo && !isTank && <path d="M91 43 Q104 63 117 43" fill="none" stroke={palette.detail} strokeWidth="3" opacity=".8" />}
-        {isTank && <path d="M91 48 Q104 66 117 49" fill="none" stroke={palette.detail} strokeWidth="2.5" opacity=".7" />}
-        {pattern === 1 && <g stroke={palette.detail} strokeWidth="1" opacity=".3"><path d="M82 100 H126 M80 106 H128 M80 112 H128 M80 118 H128 M80 124 H128 M80 130 H128" /></g>}
-        {pattern === 2 && <path d="M82 111 H94 M82 116 H94 M82 121 H94" stroke={palette.detail} strokeWidth="2" opacity=".8" />}
-        {pattern === 3 && <path d="M78 145 Q104 151 131 145" stroke={palette.detail} strokeWidth="2" fill="none" opacity=".75" />}
-        {index % 3 === 0 && <rect x="112" y="102" width="10" height="13" rx="1" fill="none" stroke={palette.detail} strokeWidth="1" opacity=".7" />}
-        <path d="M78 160 Q104 166 131 160" stroke="#fff" strokeOpacity=".15" strokeWidth="1" fill="none" />
-      </g>
-      <text x="104" y="196" textAnchor="middle" fill={palette.detail} opacity=".8" fontSize="7" letterSpacing="2.5">USEVR / ESSENTIAL</text>
-    </svg>
-  );
-}
 
 function Collection() {
   const [filter, setFilter] = useState("Todos");
@@ -118,7 +109,7 @@ function Collection() {
           {shown.map((item) => (
             <article className="collection-card" key={item.id}>
               <div className="collection-card-image">
-                <GarmentIllustration category={item.category} index={item.index} name={item.name} />
+                <img src={item.image} alt={item.name + " — foto de referência de moda"} loading="lazy" />
                 <span className="collection-number">{item.number}</span>
               </div>
               <p className="product-meta">{item.category.toUpperCase()} / USEVR</p>
@@ -128,7 +119,7 @@ function Collection() {
             </article>
           ))}
         </div>
-        <p className="collection-disclaimer">As peças acima são ilustrações de apresentação para diferenciar os modelos no catálogo. Para confirmar produtos reais, cores, tamanhos, preços e disponibilidade, solicite fotos à equipe pelo WhatsApp.</p>
+        <p className="collection-disclaimer">As fotos são referências de estilo para apresentar diferentes opções de peças e não confirmam estoque ou correspondência exata com produtos da loja. Antes de comprar, peça à equipe fotos reais, cores, tamanhos, preço e disponibilidade.</p>
       </section>
       <section className="collection-contact">
         <p className="section-kicker">NÃO ENCONTROU O QUE PROCURA?</p>
