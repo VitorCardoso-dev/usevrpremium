@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight, Instagram, Menu, X, Truck, ShieldCheck, MessageCircle, Sparkles, Plus } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Button } from "@/components/ui/button";
@@ -33,6 +33,38 @@ function Index() {
   const [filter, setFilter] = useState("Todos");
   const [selected, setSelected] = useState<Product | null>(null);
   const [size, setSize] = useState("");
+
+  useEffect(() => {
+    const targets = document.querySelectorAll<HTMLElement>(
+      ".section-heading, .category, .extra-categories, .benefit, .product, .about-copy, .contact > *",
+    );
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    document.body.classList.add("reveal-enabled");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -35px 0px" },
+    );
+
+    targets.forEach((target, index) => {
+      target.classList.add("reveal-on-scroll");
+      target.style.setProperty("--reveal-delay", `${Math.min(index % 4, 3) * 70}ms`);
+      observer.observe(target);
+    });
+
+    return () => {
+      observer.disconnect();
+      document.body.classList.remove("reveal-enabled");
+    };
+  }, []);
   const navigation = [{ label: 'Início', id: 'inicio' }, { label: 'Categorias', id: 'categorias' }, { label: 'Destaques', id: 'produtos' }, { label: 'A usevr', id: 'sobre' }];
   const visibleProducts = products.filter(p => filter === 'Todos' || p.category === filter);
 
